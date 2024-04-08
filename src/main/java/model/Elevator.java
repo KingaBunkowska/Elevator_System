@@ -4,7 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Elevator {
-    private static int currentID = 0;
     private int currentFloor = 0;
     private final int id;
     private ElevatorState state;
@@ -12,9 +11,8 @@ public class Elevator {
     private final Set<Integer> stops;
     private int stepsInLoading = 0;
 
-    public Elevator(){
-        this.id = currentID;
-        currentID++;
+    public Elevator(int id){
+        this.id = id;
         this.state = ElevatorState.IDLE;
         this.stops = new HashSet<>();
     }
@@ -42,12 +40,17 @@ public class Elevator {
     }
 
     private boolean needToChangeDirection(){
+
+        if (stops.isEmpty()){
+            return false;
+        }
+
         for (Integer stop : stops){
-            if ((stop - currentFloor) * direction.value() < 0){
-                return true;
+            if ((stop - currentFloor) * direction.value() >= 0){
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
 
@@ -60,10 +63,10 @@ public class Elevator {
             direction = direction.opposite();
             return (direction==Direction.UP)?ElevatorState.UP:ElevatorState.DOWN;
         }
-        else if (direction == Direction.UP){
+        else if (direction == Direction.UP && !stops.isEmpty()){
             return ElevatorState.UP;
         }
-        else if (direction == Direction.DOWN){
+        else if (direction == Direction.DOWN && !stops.isEmpty()){
             return ElevatorState.DOWN;
         }
         return ElevatorState.IDLE;

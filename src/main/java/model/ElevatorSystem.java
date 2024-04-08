@@ -22,7 +22,7 @@ public class ElevatorSystem {
         this.requests.put(Direction.UP, new HashSet<>());
         this.requests.put(Direction.DOWN, new HashSet<>());
         for (int i=0; i<numberOfElevators; i++){
-            this.elevators.add(i, new Elevator());
+            this.elevators.add(i, new Elevator(i));
         }
     }
 
@@ -50,7 +50,8 @@ public class ElevatorSystem {
     }
 
     private void handleStop(Elevator elevator){
-        elevator.changeStatus(elevator.getStatus().changeStateTo(ElevatorState.IDLE));
+//        elevator.changeStatus(elevator.getStatus().changeStateTo(ElevatorState.LOADING));
+        elevator.addStop(elevator.getFloor());
         requests.get(elevator.getDirection()).remove(elevator.getFloor());
     }
 

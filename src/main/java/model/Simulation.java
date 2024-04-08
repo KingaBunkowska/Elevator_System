@@ -32,4 +32,10 @@ public class Simulation {
         }
         return result;
     }
+
+    public void requestFromInside(int id, int floor){
+        Elevator elevator = elevatorSystem.getElevators().get(id);
+        elevator.addStop(floor);
+    }
+
 }
