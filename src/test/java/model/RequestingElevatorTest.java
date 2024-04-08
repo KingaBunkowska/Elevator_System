@@ -2,11 +2,10 @@ package model;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RequestingElevatorTest {
     @Test
@@ -199,6 +198,22 @@ public class RequestingElevatorTest {
 
         simulation.step();
         expected = List.of( new Status(0, 3, ElevatorState.IDLE, Direction.UP));
+        assertEquals(expected, simulation.getStatus());
+    }
+
+    @Test
+    public void sameFloorRequest(){
+        Simulation simulation = new Simulation(2, 0, 4);
+        simulation.getElevatorSystem().getElevators().getFirst().changeStatus(new Status(0, 2, ElevatorState.IDLE, Direction.UP));
+        simulation.getElevatorSystem().getElevators().getLast().changeStatus(new Status(1, 2, ElevatorState.IDLE, Direction.UP));
+        simulation.makeRequest(new Request(2, Direction.DOWN));
+        simulation.step();
+
+        List<Status> expected = List.of(
+                new Status(0, 2, ElevatorState.LOADING, Direction.UP),
+                new Status(1, 2, ElevatorState.IDLE, Direction.UP)
+        );
+
         assertEquals(expected, simulation.getStatus());
     }
 }

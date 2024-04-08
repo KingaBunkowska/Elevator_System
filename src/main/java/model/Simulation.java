@@ -14,7 +14,7 @@ public class Simulation {
     public void step(){
         elevatorSystem.assignElevators();
         elevatorSystem.stopElevators();
-        elevatorSystem.getElevators().forEach(Elevator::operate);
+        elevatorSystem.operate();
     }
 
     protected ElevatorSystem getElevatorSystem() {
@@ -22,7 +22,13 @@ public class Simulation {
     }
 
     public void makeRequest(Request request){
-        elevatorSystem.makeRequest(request);
+        try{
+            elevatorSystem.makeRequest(request);
+        }
+        catch (WrongFloorException e){
+            System.out.println(e.getMessage());
+            System.out.println("Latest request was ignored");
+        }
     }
 
     public List<Status> getStatus(){
@@ -34,8 +40,17 @@ public class Simulation {
     }
 
     public void requestFromInside(int id, int floor){
-        Elevator elevator = elevatorSystem.getElevators().get(id);
-        elevator.addStop(floor);
+        try {
+            Elevator elevator = elevatorSystem.getElevators().get(id);
+            elevator.addStop(floor);
+        }
+        catch (WrongFloorException e){
+            System.out.println(e.getMessage());
+            System.out.println("Request was ignored");
+        }
+        catch (IndexOutOfBoundsException e){
+            System.out.println("Requested elevator do not exist.\n Request was ignored");
+        }
     }
 
 }

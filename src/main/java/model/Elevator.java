@@ -9,9 +9,12 @@ public class Elevator {
     private ElevatorState state;
     private Direction direction = Direction.UP;
     private final Set<Integer> stops;
-    private int stepsInLoading = 0;
+    private final int lowestFloor;
+    private final int highestFloor;
 
-    public Elevator(int id){
+    public Elevator(int id, int lowestFloor, int highestFloor) {
+        this.lowestFloor = lowestFloor;
+        this.highestFloor = highestFloor;
         this.id = id;
         this.state = ElevatorState.IDLE;
         this.stops = new HashSet<>();
@@ -34,7 +37,6 @@ public class Elevator {
             case DOWN -> currentFloor -= 1;
             case LOADING -> {
                 stops.removeIf(stop -> stop == currentFloor);
-                stepsInLoading++;
             }
         }
     }
@@ -52,7 +54,6 @@ public class Elevator {
         }
         return true;
     }
-
 
     private ElevatorState calculateState(){
         if (stops.contains(currentFloor)){
@@ -72,7 +73,10 @@ public class Elevator {
         return ElevatorState.IDLE;
     }
 
-    protected void addStop(int floor){
+    protected void addStop(int floor) throws WrongFloorException {
+        if (floor>highestFloor || floor<lowestFloor){
+            throw new WrongFloorException(floor);
+        }
         stops.add(floor);
     }
 
