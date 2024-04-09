@@ -26,7 +26,7 @@
             <Spinner fx:id="lowestFloorSpinner" initialValue="0" min="-99" max="79"/>
 
             <Label text="Number of floors" />
-            <Spinner fx:id="numberOfFloorsSpinner" initialValue="4" min="2" max="16"/>
+            <Spinner fx:id="numberOfFloorsSpinner" initialValue="4" min="2" max="12"/>
 
         </VBox>
     </center>

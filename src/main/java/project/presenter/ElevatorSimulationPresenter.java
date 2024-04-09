@@ -149,7 +149,6 @@ public class ElevatorSimulationPresenter implements SimulationListener {
                 rectangle.setFill(Color.GRAY);
             }
             gridPane.add(rectangle, elevator.getStatus().elevatorID()+1, simulation.getHighestFloor() - elevator.getFloor() + 1);
-            System.out.println(elevator.getStatus());
         }
     }
 

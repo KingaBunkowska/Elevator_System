@@ -25,7 +25,6 @@ public class RequestButton extends Polygon {
     }
 
     public void activate(){
-        System.out.println("Request for " + floor + " in direction ");
         simulation.makeRequest(new Request(floor, direction));
     }
 

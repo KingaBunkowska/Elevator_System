@@ -107,7 +107,6 @@ public class ElevatorSystem {
         elevators.stream()
                 .filter(elevator -> elevator.getStatus().state() == ElevatorState.IDLE)
                 .forEach(this::addRequestIfThereIs);
-
     }
 
     public void operate() {

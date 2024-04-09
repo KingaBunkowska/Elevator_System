@@ -105,13 +105,11 @@ public class Simulation {
 
     public void pauseSimulation() {
         run = false;
-        System.out.println("pause");
     }
 
     public void runSimulation(){
         run = true;
         startSimulation();
-        System.out.println("run");
     }
 
     public void addListener(ElevatorSimulationPresenter elevatorSimulationPresenter) {

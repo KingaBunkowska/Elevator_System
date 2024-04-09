@@ -33,7 +33,6 @@ public class Elevator {
 
     protected void operate(){
         this.state = calculateState();
-        System.out.println("operating "+state);
         switch (this.state){
             case UP -> currentFloor += 1;
             case DOWN -> currentFloor -= 1;

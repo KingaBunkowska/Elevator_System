@@ -32,10 +32,10 @@
 
     </center>
     <bottom>
-        <VBox>
+        <HBox alignment="CENTER">
             <Button fx:id="run" text="Run" onAction="#run"/>
             <Button fx:id="pause" text="Pause" onAction="#pause"/>
-        </VBox>
+        </HBox>
     </bottom>
 
 </BorderPane>
