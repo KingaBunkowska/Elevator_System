@@ -1,6 +1,7 @@
-package model;
+package project.model;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class Elevator {
@@ -42,7 +43,6 @@ public class Elevator {
     }
 
     private boolean needToChangeDirection(){
-
         if (stops.isEmpty()){
             return false;
         }
@@ -87,4 +87,5 @@ public class Elevator {
     public int getFloor() {
         return this.currentFloor;
     }
+
 }

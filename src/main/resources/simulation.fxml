@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="project.presenter.ElevatorSimulationPresenter"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="simulation.css">
+
+    <center>
+        <HBox alignment="CENTER">
+            <VBox>
+                <GridPane fx:id="gridPane" gridLinesVisible="true"/>
+                <Button fx:id="step" text="STEP" onAction="#onSimulationStep" alignment="CENTER"/>
+            </VBox>
+            <VBox>
+                <Label text="Elevator ID:"/>
+                <Spinner fx:id="id" min="0" max="15"/>
+
+                <Label text="Floor:"/>
+                <Spinner fx:id="floor"/>
+
+                <Button fx:id="request" text="Execute" onAction="#execute" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+
+            </VBox>
+        </HBox>
+    </center>
+
+</BorderPane>

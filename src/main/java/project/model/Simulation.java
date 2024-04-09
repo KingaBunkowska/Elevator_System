@@ -1,4 +1,6 @@
-package model;
+package project.model;
+
+import project.presenter.RequestButton;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,9 +8,15 @@ import java.util.List;
 public class Simulation {
 
     private final ElevatorSystem elevatorSystem;
+    int numberOfElevator;
+    int highestFloor;
+    int lowestFloor;
 
     public Simulation(int numberOfElevators, int lowestFloor, int highestFloor){
         this.elevatorSystem = new ElevatorSystem(numberOfElevators, lowestFloor, highestFloor);
+        this.numberOfElevator = numberOfElevators;
+        this.highestFloor = highestFloor;
+        this.lowestFloor = lowestFloor;
     }
 
     public void step(){
@@ -39,7 +47,11 @@ public class Simulation {
         return result;
     }
 
-    public void requestFromInside(int id, int floor){
+    public int getNumberOfElevators(){
+        return numberOfElevator;
+    }
+
+    public void makeRequestFromInside(int id, int floor){
         try {
             Elevator elevator = elevatorSystem.getElevators().get(id);
             elevator.addStop(floor);
@@ -53,4 +65,23 @@ public class Simulation {
         }
     }
 
+    public void checkElevators(){
+        elevatorSystem.checkElevators();
+    }
+
+    public void fixElevator(int elevatorID, int floor){
+        elevatorSystem.fix(elevatorID, floor);
+    }
+
+    public int getHighestFloor() {
+        return highestFloor;
+    }
+
+    public int getLowestFloor(){
+        return lowestFloor;
+    }
+
+    public List<Elevator> getElevators(){
+        return elevatorSystem.getElevators();
+    }
 }

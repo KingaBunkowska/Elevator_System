@@ -1,5 +1,6 @@
-package model;
+package project.model;
 
+import model.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

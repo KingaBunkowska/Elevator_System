@@ -1,0 +1,91 @@
+BorderPane {
+    -fx-background-color: rgb(59, 64, 66);
+}
+
+#textField {
+    -fx-padding: 20;
+    -fx-pref-height: 20;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-background-color: rgb(109, 117, 121);
+}
+
+VBox {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-padding: 20;
+}
+
+HBox {
+    -fx-spacing: 10;
+    -fx-padding: 20;
+}
+
+Label{
+    -fx-font-size: 15;
+    -fx-text-fill: rgb(0, 0, 0);
+}
+
+Spinner{
+    -fx-max-width: 70;
+}
+
+button {
+    -fx-background-color: #5e9ca0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-border-radius: 100px;
+}
+
+#gridPane {
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
+
+#start {
+    -fx-pref-width: 128;
+    -fx-pref-height: 48;
+    -fx-font-size: 18;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #45ad53;
+    -fx-border-radius: 100;
+}
+
+#Title {
+    -fx-font-size: 32;
+    -fx-font-weight: bold;
+}
+
+.small-spinner .spinner-arrow,
+.small-spinner .spinner-increment-button,
+.small-spinner .spinner-decrement-button {
+    -fx-pref-height: 15px;
+    -fx-padding: 1px 4px;
+}
+
+.small-spinner .spinner-text-field {
+    -fx-pref-height: 15px;
+    -fx-font-size: 10px;
+}
+
+.root {
+    -fx-background-color: #f0f0f0;
+    -fx-font-family: Arial;
+}
+
+.label {
+    -fx-text-fill: #333333;
+}
+
+.button:hover {
+    -fx-background-color: #3b7a57;
+}
+
+.inputDescription {
+    -fx-font-size: 14;
+    -fx-pref-height: 10;
+}
+
+.configBox {
+}
