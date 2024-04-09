@@ -26,4 +26,4 @@ test {
     useJUnitPlatform()
 }
 
-mainClassName = 'GUI'
+mainClassName = 'project.GUI'
