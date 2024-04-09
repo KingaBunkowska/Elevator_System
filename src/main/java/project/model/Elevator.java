@@ -1,6 +1,7 @@
-package model;
+package project.model;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class Elevator {
@@ -32,6 +33,7 @@ public class Elevator {
 
     protected void operate(){
         this.state = calculateState();
+        System.out.println("operating "+state);
         switch (this.state){
             case UP -> currentFloor += 1;
             case DOWN -> currentFloor -= 1;
@@ -42,7 +44,6 @@ public class Elevator {
     }
 
     private boolean needToChangeDirection(){
-
         if (stops.isEmpty()){
             return false;
         }
@@ -87,4 +88,5 @@ public class Elevator {
     public int getFloor() {
         return this.currentFloor;
     }
+
 }

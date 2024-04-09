@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="project.presenter.MainPresenter"
+            prefHeight="600.0" prefWidth="800.0"
+            stylesheets="main.css">
+
+    <top>
+        <HBox alignment="CENTER">
+            <Label text="Simulation parameters" fx:id="Title"/>
+        </HBox>
+    </top>
+    <center>
+        <VBox alignment="CENTER">
+            <Label text="Number of elevators: " />
+            <Spinner fx:id="elevatorNumberSpinner" min="1" max="16" initialValue="2" />
+
+            <Label text="Lowest floor" />
+            <Spinner fx:id="lowestFloorSpinner" initialValue="0" min="-99" max="79"/>
+
+            <Label text="Number of floors" />
+            <Spinner fx:id="numberOfFloorsSpinner" initialValue="4" min="2" max="16"/>
+
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER">
+            <Button fx:id="start" text="START" onAction="#onOptionsAccepted" alignment="CENTER"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

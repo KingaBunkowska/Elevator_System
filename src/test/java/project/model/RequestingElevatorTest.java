@@ -1,4 +1,4 @@
-package model;
+package project.model;
 
 import org.junit.jupiter.api.Test;
 
@@ -49,7 +49,7 @@ public class RequestingElevatorTest {
         assertEquals(expected, simulation.getStatus());
 
         // request from inside an elevator
-        simulation.requestFromInside(0, 2);
+        simulation.makeRequestFromInside(0, 2);
 
         simulation.step();
         expected = List.of( new Status(0, 2, ElevatorState.UP, Direction.UP));
@@ -67,7 +67,7 @@ public class RequestingElevatorTest {
         expected = List.of( new Status(0, 3, ElevatorState.LOADING, Direction.UP));
         assertEquals(expected, simulation.getStatus());
 
-        simulation.requestFromInside(0, 2);
+        simulation.makeRequestFromInside(0, 2);
 
         simulation.step();
         expected = List.of( new Status(0, 2, ElevatorState.DOWN, Direction.DOWN));
@@ -111,7 +111,7 @@ public class RequestingElevatorTest {
         expected = List.of( new Status(0, 2, ElevatorState.LOADING, Direction.UP));
         assertEquals(expected, simulation.getStatus());
 
-        simulation.requestFromInside(0, 0);
+        simulation.makeRequestFromInside(0, 0);
 
         simulation.step();
         expected = List.of( new Status(0, 1, ElevatorState.DOWN, Direction.DOWN));
@@ -159,7 +159,7 @@ public class RequestingElevatorTest {
         expected = List.of( new Status(0, 2, ElevatorState.LOADING, Direction.UP));
         assertEquals(expected, simulation.getStatus());
 
-        simulation.requestFromInside(0, 0);
+        simulation.makeRequestFromInside(0, 0);
 
         simulation.step();
         expected = List.of( new Status(0, 1, ElevatorState.DOWN, Direction.DOWN));
@@ -170,7 +170,7 @@ public class RequestingElevatorTest {
         assertEquals(expected, simulation.getStatus());
 
         // invalid request, should be handled after going down
-        simulation.requestFromInside(0, 3);
+        simulation.makeRequestFromInside(0, 3);
 
         simulation.step();
         expected = List.of( new Status(0, 0, ElevatorState.DOWN, Direction.DOWN));
