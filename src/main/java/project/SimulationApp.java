@@ -17,6 +17,7 @@ import java.util.List;
 public class SimulationApp extends Application {
 
     private Stage primaryStage;
+    private Simulation simulation;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -35,6 +36,7 @@ public class SimulationApp extends Application {
 
         primaryStage.setOnCloseRequest(event -> {
             Platform.exit();
+            simulation.pauseSimulation();
         });
 
 
@@ -42,6 +44,7 @@ public class SimulationApp extends Application {
 
     public void addStage(Simulation simulation){
         try {
+            this.simulation = simulation;
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getClassLoader().getResource("simulation.fxml"));
             BorderPane newWindowRoot = loader.load();

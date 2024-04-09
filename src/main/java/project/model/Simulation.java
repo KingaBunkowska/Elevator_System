@@ -1,6 +1,6 @@
 package project.model;
 
-import project.presenter.RequestButton;
+import project.presenter.ElevatorSimulationPresenter;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,6 +11,9 @@ public class Simulation {
     int numberOfElevator;
     int highestFloor;
     int lowestFloor;
+    private boolean run = false;
+
+    private SimulationListener simulationListner;
 
     public Simulation(int numberOfElevators, int lowestFloor, int highestFloor){
         this.elevatorSystem = new ElevatorSystem(numberOfElevators, lowestFloor, highestFloor);
@@ -83,5 +86,41 @@ public class Simulation {
 
     public List<Elevator> getElevators(){
         return elevatorSystem.getElevators();
+    }
+
+    public void startSimulation() {
+        Thread simulationThread = new Thread(() -> {
+            while (run) {
+                step();
+                makeChange();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        simulationThread.start();
+    }
+
+    public void pauseSimulation() {
+        run = false;
+        System.out.println("pause");
+    }
+
+    public void runSimulation(){
+        run = true;
+        startSimulation();
+        System.out.println("run");
+    }
+
+    public void addListener(ElevatorSimulationPresenter elevatorSimulationPresenter) {
+        simulationListner = elevatorSimulationPresenter;
+    }
+
+    public void makeChange(){
+        if (simulationListner!=null){
+            simulationListner.simulationChanged();
+        }
     }
 }

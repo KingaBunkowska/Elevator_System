@@ -25,10 +25,17 @@
                 <Label text="Floor:"/>
                 <Spinner fx:id="floor"/>
 
-                <Button fx:id="request" text="Execute" onAction="#execute" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.columnSpan="2"/>
+                <Button fx:id="request" text="Inside request" onAction="#execute" />
 
             </VBox>
         </HBox>
+
     </center>
+    <bottom>
+        <VBox>
+            <Button fx:id="run" text="Run" onAction="#run"/>
+            <Button fx:id="pause" text="Pause" onAction="#pause"/>
+        </VBox>
+    </bottom>
 
 </BorderPane>

@@ -1,5 +1,7 @@
-#gridPane{
-    -fx-alignment: center;
+
+.grid-pane {
+    -fx-grid-lines-visible: true;
+    -fx-grid-line-color: red;
 }
 
 Label{
@@ -47,17 +49,6 @@ BorderPane {
      -fx-max-width: 70;
  }
 
- button {
-     -fx-background-color: #5e9ca0;
-     -fx-text-fill: white;
-     -fx-font-size: 14px;
-     -fx-border-radius: 100px;
- }
-
- #gridPane {
-     -fx-hgap: 10;
-     -fx-vgap: 10;
- }
 
  .button {
      -fx-pref-width: 128;
