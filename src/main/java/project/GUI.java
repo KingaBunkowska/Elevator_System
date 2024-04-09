@@ -2,7 +2,7 @@ package project;
 
 import javafx.application.Application;
 
-public class WorldGUI {
+public class GUI {
     public static void main(String[] args){
         Application.launch(SimulationApp.class, args);
     }
