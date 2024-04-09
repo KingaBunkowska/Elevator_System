@@ -1,3 +1,19 @@
+## Installation Instructions
+
+1. Ensure that you have Java installed on your system.
+2. Clone the repository using the following command:
+```bash
+git clone github.com/KingaBunkowska/Elevator_System
+```
+3. Nawigate to project directory
+```bash 
+cd Elevator_System
+```
+4. Run project
+```bash 
+./gradlew.bat run
+```
+
 ## Solution Architecture
 
 My solution to the given problem consists of 3 main classes.
@@ -19,3 +35,17 @@ My solution to the given problem consists of 3 main classes.
         - Making external elevator calls (`makeRequest` method)
         - Making internal calls from within the elevator (`makeRequestFromInside` method)
     - Allows for advancing one step in the simulation and returning the state of all elevators
+
+## Handling Requests
+
+The aim behind the creation of the algorithm for selecting and handling elevator requests was to ensure maximum user comfort while saving energy. Therefore, requests are handled as follows:
+
+- If an elevator is idle and there are external requests in the system, it will select the nearest request and start moving in that direction.
+
+- If, during its journey, the elevator reaches a floor where there is a request in the direction it is already travelling, system will stop it and make it accept request (only one elevator per floor) and open its doors.
+
+- Elevators will continue in one direction for as long as possible, changing direction only when there are no planned visits in the current direction.
+
+- Elevators handle internal requests autonomously since only they can execute them.
+
+Additionally, if an elevator is under maintenance, it will not accept any external requests.

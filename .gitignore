@@ -44,3 +44,5 @@ bin/
 ./gradle
 gradlew
 /.idea
+
+*.bundle
